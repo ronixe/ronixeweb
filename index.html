@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Ronixe | Software, Evolved.</title>
+   <title data-t="meta.title">Ronixe | Software, Evolved.</title>
    <meta name="description" content="Ronixe is a premier engineering firm specializing in AI-native applications, scalable SaaS ecosystems, and modern digital infrastructure. We transform ambitious roadmaps into high-performance software.">
    <meta name="keywords" content="Software Engineering, AI Development, SaaS, Scalable Infrastructure, Fintech, EdTech, Logistics, Ronixe">
    
@@ -41,17 +41,20 @@
       </a>
       
       <div class="nav-links">
-        <a href="#capabilities" class="nav-link">Services</a>
-        <a href="#industries" class="nav-link">Industries</a>
-        <a href="#products" class="nav-link">Product</a>
-        <a href="#methodology" class="nav-link">Process</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#capabilities" class="nav-link" data-t="nav.services">Services</a>
+        <a href="#industries" class="nav-link" data-t="nav.industries">Industries</a>
+        <a href="#products" class="nav-link" data-t="nav.product">Product</a>
+        <a href="#methodology" class="nav-link" data-t="nav.process">Process</a>
+        <a href="#contact" class="nav-link" data-t="nav.contact">Contact</a>
       </div>
       
       <div class="nav-cta">
-        <a href="https://wa.link/e0sjx2" target="_blank" class="btn-navbar">
+        <button id="lang-toggle" class="btn-lang" aria-label="Toggle Language">
+          <span class="lang-text">FR</span>
+        </button>
+        <a href="https://wa.link/e0sjx2" target="_blank" class="btn-navbar header-cta">
           <i data-lucide="phone"></i>
-          Book a Call
+          <span data-t="nav.cta">Book a Call</span>
         </a>
       </div>
     </div>
@@ -66,17 +69,17 @@
     
     <div class="container hero-container">
       <div class="hero-content">
-        <h1 class="reveal">Software,<br>Evolved.</h1>
+        <h1 class="reveal" data-t="hero.title">Software,<br>Evolved.</h1>
         
-        <p class="hero-description reveal" style="transition-delay: 200ms;">
+        <p class="hero-description reveal" style="transition-delay: 200ms;" data-t="hero.desc">
           We engineer AI-native applications, scalable SaaS, and modern digital infrastructure for ambitious companies.
         </p>
         
         <div class="hero-actions reveal" style="transition-delay: 400ms;">
-          <a href="https://wa.link/e0sjx2" target="_blank" class="btn-framer">
+          <a href="https://wa.link/e0sjx2" target="_blank" class="btn-framer" data-t="hero.cta_primary">
             Book a Call
           </a>
-          <a href="#products" class="btn-framer secondary">Our Product</a>
+          <a href="#products" class="btn-framer secondary" data-t="hero.cta_secondary">Our Product</a>
         </div>
       </div>
 
@@ -85,11 +88,11 @@
       <!-- Services Marquee -->
       <div class="hero-marquee reveal" style="transition-delay: 700ms;">
         <div class="marquee-track">
-          <div class="marquee-item">
+          <div class="marquee-item" data-t="hero.marquee">
             <span>PRECISION ENGINEERING</span> ✤ <span>AUTONOMOUS SYSTEMS</span> ✤ <span>AI-NATIVE INTERFACES</span> ✤ <span>SCALABLE CLOUD ARCHITECTURE</span> ✤ <span>DIGITAL MODERNIZATION</span> ✤ <span>STRATEGIC SaaS</span> ✤ &nbsp;
           </div>
-          <div class="marquee-item">
-            <span>PRECISION ENGINEERING</span> ✤ <span>AUTONOMOUS SYSTEMS</span> ✤ <span>AI-NATIVE INTERFACES</span> ✤ <span>SCALABLE CLOUD ARCHITECTURE</span> ✤ <span>DIGITAL MODERNIZATION</span> ✤ <span>STRATEGIC SaaS</span> ✤ &nbsp;
+          <div class="marquee-item" data-t="hero.marquee">
+            <span>PRECISION ENGINEERING</span> ✤ <span>AUTONOMOUS SYSTEMS</span> <span>AI-NATIVE INTERFACES</span> ✤ <span>SCALABLE CLOUD ARCHITECTURE</span> ✤ <span>DIGITAL MODERNIZATION</span> ✤ <span>STRATEGIC SaaS</span> ✤ &nbsp;
           </div>
         </div>
       </div>
@@ -102,34 +105,34 @@
   <section id="capabilities">
     <div class="container reveal">
       <div class="section-header">
-        <span class="tag">Expertise</span>
-        <h2>Capabilities.</h2>
-        <p class="section-desc">We provide full-lifecycle technical capabilities to turn ambitious ideas into robust realities.</p>
+        <span class="tag" data-t="caps.tag">Expertise</span>
+        <h2 data-t="caps.title">Capabilities.</h2>
+        <p class="section-desc" data-t="caps.desc">We provide full-lifecycle technical capabilities to turn ambitious ideas into robust realities.</p>
       </div>
 
       <div class="grid-2">
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="brain-circuit"></i></div>
-          <h3 class="card-title">AI-Native Development</h3>
-          <p class="card-desc">Applications built with artificial intelligence in their DNA. We deliver predictive user experiences and autonomous systems.</p>
+          <h3 class="card-title" data-t="caps.ai_title">AI-Native Development</h3>
+          <p class="card-desc" data-t="caps.ai_desc">Applications built with artificial intelligence in their DNA. We deliver predictive user experiences and autonomous systems.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="code-2"></i></div>
-          <h3 class="card-title">SaaS Engineering</h3>
-          <p class="card-desc">From whiteboard concept to scalable enterprise architecture. We act as your dedicated technical partner to launch and scale.</p>
+          <h3 class="card-title" data-t="caps.saas_title">SaaS Engineering</h3>
+          <p class="card-desc" data-t="caps.saas_desc">From whiteboard concept to scalable enterprise architecture. We act as your dedicated technical partner to launch and scale.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="refresh-ccw"></i></div>
-          <h3 class="card-title">Legacy Modernization</h3>
-          <p class="card-desc">Bring your operations into the future. We refactor outdated code and seamlessly integrate modern AI automation into your existing workflows.</p>
+          <h3 class="card-title" data-t="caps.legacy_title">Legacy Modernization</h3>
+          <p class="card-desc" data-t="caps.legacy_desc">Bring your operations into the future. We refactor outdated code and seamlessly integrate modern AI automation into your existing workflows.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="network"></i></div>
-          <h3 class="card-title">API Ecosystems</h3>
-          <p class="card-desc">Eliminate friction. We build secure microservices that connect your tools, automate workflows, and unify your data.</p>
+          <h3 class="card-title" data-t="caps.api_title">API Ecosystems</h3>
+          <p class="card-desc" data-t="caps.api_desc">Eliminate friction. We build secure microservices that connect your tools, automate workflows, and unify your data.</p>
         </div>
       </div>
     </div>
@@ -139,46 +142,46 @@
   <section id="industries">
     <div class="container reveal">
       <div class="section-header">
-        <span class="tag">Sectors</span>
-        <h2>Industries we serve.</h2>
-        <p class="section-desc">Engineering bespoke digital solutions for high-growth sectors that require precision and scale.</p>
+        <span class="tag" data-t="ind.tag">Sectors</span>
+        <h2 data-t="ind.title">Industries we serve.</h2>
+        <p class="section-desc" data-t="ind.desc">Engineering bespoke digital solutions for high-growth sectors that require precision and scale.</p>
       </div>
 
       <div class="grid-3">
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="shopping-bag"></i></div>
-          <h3 class="card-title">E-commerce</h3>
-          <p class="card-desc">Scaling high-traffic storefronts with intelligent recommendation engines and autonomous checkouts.</p>
+          <h3 class="card-title" data-t="ind.ecom_title">E-commerce</h3>
+          <p class="card-desc" data-t="ind.ecom_desc">Scaling high-traffic storefronts with intelligent recommendation engines and autonomous checkouts.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="banknote"></i></div>
-          <h3 class="card-title">Fintech</h3>
-          <p class="card-desc">Modernizing financial infrastructure with secure, AI-driven transaction systems.</p>
+          <h3 class="card-title" data-t="ind.fin_title">Fintech</h3>
+          <p class="card-desc" data-t="ind.fin_desc">Modernizing financial infrastructure with secure, AI-driven transaction systems.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="stethoscope"></i></div>
-          <h3 class="card-title">HealthTech</h3>
-          <p class="card-desc">Building compliant, intelligent patient data platforms for global scale.</p>
+          <h3 class="card-title" data-t="ind.health_title">HealthTech</h3>
+          <p class="card-desc" data-t="ind.health_desc">Building compliant, intelligent patient data platforms for global scale.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="rocket"></i></div>
-          <h3 class="card-title">SaaS</h3>
-          <p class="card-desc">Next-gen software architectures built for global multi-tenant scalability.</p>
+          <h3 class="card-title" data-t="ind.saas_title">SaaS</h3>
+          <p class="card-desc" data-t="ind.saas_desc">Next-gen software architectures built for global multi-tenant scalability.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="truck"></i></div>
-          <h3 class="card-title">Logistics</h3>
-          <p class="card-desc">Optimizing complex operations through real-time tracking and AI-native automation.</p>
+          <h3 class="card-title" data-t="ind.log_title">Logistics</h3>
+          <p class="card-desc" data-t="ind.log_desc">Optimizing complex operations through real-time tracking and AI-native automation.</p>
         </div>
 
         <div class="glass-card stagger-item">
           <div class="icon-box"><i data-lucide="graduation-cap"></i></div>
-          <h3 class="card-title">Education</h3>
-          <p class="card-desc">Engineering intelligent learning systems and autonomous educational platforms.</p>
+          <h3 class="card-title" data-t="ind.edu_title">Education</h3>
+          <p class="card-desc" data-t="ind.edu_desc">Engineering intelligent learning systems and autonomous educational platforms.</p>
         </div>
       </div>
     </div>
@@ -188,9 +191,9 @@
   <section id="products">
     <div class="container">
       <div class="section-header reveal">
-        <span class="tag">Ecosystem</span>
-        <h2>Built by Ronixe.</h2>
-        <p class="section-desc">Showcasing the high-performance digital ecosystems engineered and launched within our laboratory.</p>
+        <span class="tag" data-t="prod.tag">Ecosystem</span>
+        <h2 data-t="prod.title">Built by Ronixe.</h2>
+        <p class="section-desc" data-t="prod.desc">Showcasing the high-performance digital ecosystems engineered and launched within our laboratory.</p>
       </div>
 
       <div class="product-featured-card reveal">
@@ -200,8 +203,8 @@
         </div>
         <div class="product-info">
           <h3 class="card-title">BatoNow</h3>
-          <p class="card-desc">A next-generation social commerce marketplace powered by AI. BatoNow integrates intelligent product discovery and autonomous vendor operations to redefine modern digital trade.</p>
-          <a href="#" class="learn-more">Explore BatoNow <i data-lucide="arrow-right"></i></a>
+          <p class="card-desc" data-t="prod.bn_desc">A next-generation social commerce marketplace powered by AI. BatoNow integrates intelligent product discovery and autonomous vendor operations to redefine modern digital trade.</p>
+          <a href="#" class="learn-more"><span data-t="prod.bn_link">Explore BatoNow</span> <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -212,11 +215,11 @@
     <div class="container reveal">
       <div class="methodology-grid">
         <div class="sticky-side">
-          <span class="tag">Our Process</span>
-          <h2>Engineering<br>that scales.</h2>
-          <p class="section-desc">A rigorous, three-phase engineering cycle designed to transform ambitious roadmaps into high-performance digital infrastructure.</p>
+          <span class="tag" data-t="meth.tag">Our Process</span>
+          <h2 data-t="meth.title">Engineering<br>that scales.</h2>
+          <p class="section-desc" data-t="meth.desc">A rigorous, three-phase engineering cycle designed to transform ambitious roadmaps into high-performance digital infrastructure.</p>
           <br>
-          <a href="#contact" class="btn-framer">Book a Free Call</a>
+          <a href="#contact" class="btn-framer" data-t="meth.cta">Book a Free Call</a>
         </div>
         
         <div class="steps">
@@ -225,8 +228,8 @@
               <div class="icon-box"><i data-lucide="map"></i></div>
               <span class="step-num">1</span>
             </div>
-            <h3 class="card-title">Strategic Blueprinting</h3>
-            <p class="card-desc">We architect a modular technical roadmap, ensuring your infrastructure is ready to scale from day one.</p>
+            <h3 class="card-title" data-t="meth.step1_title">Strategic Blueprinting</h3>
+            <p class="card-desc" data-t="meth.step1_desc">We architect a modular technical roadmap, ensuring your infrastructure is ready to scale from day one.</p>
           </div>
 
           <div class="glass-card step-card">
@@ -234,8 +237,8 @@
               <div class="icon-box"><i data-lucide="cpu"></i></div>
               <span class="step-num">2</span>
             </div>
-            <h3 class="card-title">Precision Engineering</h3>
-            <p class="card-desc">Our developers build AI-native systems and robust SaaS applications with a focus on code quality and autonomous logic.</p>
+            <h3 class="card-title" data-t="meth.step2_title">Precision Engineering</h3>
+            <p class="card-desc" data-t="meth.step2_desc">Our developers build AI-native systems and robust SaaS applications with a focus on code quality and autonomous logic.</p>
           </div>
 
           <div class="glass-card step-card">
@@ -243,8 +246,8 @@
               <div class="icon-box"><i data-lucide="trending-up"></i></div>
               <span class="step-num">3</span>
             </div>
-            <h3 class="card-title">Operational Scale</h3>
-            <p class="card-desc">We deploy and optimize your systems within a high-availability framework, ensuring seamless growth without technical debt.</p>
+            <h3 class="card-title" data-t="meth.step3_title">Operational Scale</h3>
+            <p class="card-desc" data-t="meth.step3_desc">We deploy and optimize your systems within a high-availability framework, ensuring seamless growth without technical debt.</p>
           </div>
         </div>
       </div>
@@ -254,12 +257,12 @@
   <!-- ETHOS -->
   <section id="ethos">
     <div class="container reveal">
-      <blockquote class="ethos-quote">
+      <blockquote class="ethos-quote" data-t="ethos.quote">
         “The best technology is invisible. It should empower your business to move faster, scale without friction, and solve complex problems autonomously. We don't just write code; we engineer the future.”
       </blockquote>
       <div class="ethos-signoff">
         <p class="founder-name">— Foweh Princewill Petinjoh</p>
-        <p class="founder-title">Founder</p>
+        <p class="founder-title" data-t="ethos.founder_title">Founder</p>
       </div>
     </div>
   </section>
@@ -269,21 +272,21 @@
     <div class="container reveal">
       <div class="contact-grid">
         <div class="contact-header">
-          <span class="tag">Contact</span>
-          <h2 class="contact-title">Ready to scale?</h2>
-          <p class="section-desc">We transform ambitious Roadmaps into high-performance software. Let's start the conversation.</p>
+          <span class="tag" data-t="contact.tag">Contact</span>
+          <h2 class="contact-title" data-t="contact.title">Ready to scale?</h2>
+          <p class="section-desc" data-t="contact.desc">We transform ambitious Roadmaps into high-performance software. Let's start the conversation.</p>
           
           <div class="contact-info">
             <div class="info-item">
-              <span class="info-label">Email</span>
+              <span class="info-label" data-t="contact.email">Email</span>
               <a href="mailto:info@ronixe.com" class="info-value">info@ronixe.com</a>
             </div>
             <div class="info-item">
-              <span class="info-label">Phone</span>
+              <span class="info-label" data-t="contact.phone">Phone</span>
               <a href="tel:+237679749282" class="info-value">+237 679 749 282</a>
             </div>
             <div class="info-item">
-              <span class="info-label">Address</span>
+              <span class="info-label" data-t="contact.address">Address</span>
               <p class="info-value">Molyko, Buea, Cameroon.</p>
             </div>
           </div>
@@ -291,11 +294,11 @@
 
         <form class="simple-form" action="contact.php" method="POST">
           <div class="input-row">
-            <input type="text" name="name" placeholder="Name" required>
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="name" placeholder="Name" required data-t-placeholder="contact.placeholder_name">
+            <input type="email" name="email" placeholder="Email" required data-t-placeholder="contact.placeholder_email">
           </div>
-          <textarea name="message" rows="4" placeholder="A brief overview of your vision" required></textarea>
-          <button type="submit" class="btn-primary">Send to Ronixe</button>
+          <textarea name="message" rows="4" placeholder="A brief overview of your vision" required data-t-placeholder="contact.placeholder_msg"></textarea>
+          <button type="submit" class="btn-primary" data-t="contact.submit">Send to Ronixe</button>
         </form>
       </div>
     </div>
@@ -304,7 +307,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p class="copyright">&copy; 2026 Ronixe. All rights reserved.</p>
+      <p class="copyright" data-t="footer.copy">&copy; 2026 Ronixe. All rights reserved.</p>
     </div>
   </footer>
 
@@ -312,26 +315,27 @@
   <div class="mobile-dock">
     <a href="#capabilities" class="dock-item">
       <i data-lucide="layers"></i>
-      <span>Services</span>
+      <span data-t="dock.services">Services</span>
     </a>
     <a href="#industries" class="dock-item">
       <i data-lucide="briefcase"></i>
-      <span>Sectors</span>
+      <span data-t="dock.sectors">Sectors</span>
     </a>
     <a href="#products" class="dock-item">
       <i data-lucide="cpu"></i>
-      <span>Product</span>
+      <span data-t="dock.product">Product</span>
     </a>
     <a href="#methodology" class="dock-item">
       <i data-lucide="git-merge"></i>
-      <span>Process</span>
+      <span data-t="dock.process">Process</span>
     </a>
     <a href="https://wa.link/e0sjx2" class="dock-item active-dock" target="_blank">
       <i data-lucide="phone"></i>
-      <span>Book</span>
+      <span data-t="dock.book">Book</span>
     </a>
   </div>
 
+  <script src="translations.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

@@ -151,4 +151,64 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // 6. MULTI-LANGUAGE LOGIC
+  const langToggle = document.getElementById('lang-toggle');
+  const langText = langToggle.querySelector('.lang-text');
+  let currentLang = localStorage.getItem('ronixe_lang') || 'en';
+
+  const updateContent = (lang) => {
+    // Update elements with data-t attribute
+    document.querySelectorAll('[data-t]').forEach(el => {
+      const key = el.getAttribute('data-t');
+      if (translations[lang] && translations[lang][key]) {
+        // Handle elements with children vs simple text
+        if (el.tagName === 'TITLE') {
+          document.title = translations[lang][key];
+        } else if (key.includes('title') || key.includes('desc') || key.includes('marquee') || key.includes('quote')) {
+          el.innerHTML = translations[lang][key];
+        } else {
+          el.textContent = translations[lang][key];
+        }
+      }
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-t-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-t-placeholder');
+      if (translations[lang] && translations[lang][key]) {
+        el.setAttribute('placeholder', translations[lang][key]);
+      }
+    });
+
+    // Update button text - show the OTHER language as option
+    langText.textContent = lang === 'en' ? 'FR' : 'EN';
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+    
+    // Save preference
+    localStorage.setItem('ronixe_lang', lang);
+
+    // Refresh Lucide icons in case any were replaced (not common but good practice)
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  };
+
+  // Initial load
+  if (currentLang === 'fr') {
+    updateContent('fr');
+  }
+
+  langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'fr' : 'en';
+    updateContent(currentLang);
+    
+    // Smooth transition effect
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+      document.body.style.opacity = '1';
+    }, 50);
+  });
 });

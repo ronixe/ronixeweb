@@ -7,10 +7,18 @@
    ============================================================ */
 
 :root {
-  /* Brand orange — the reference button/chip gradient */
-  --orange-1: #ee6c32;
-  --orange-2: #da3b27;
-  --orange-grad: linear-gradient(180deg, var(--orange-1) 0%, var(--orange-2) 100%);
+  /* Ronixe brand accent. --accent is the exact brand value; the two
+     derivatives are the same hue at +/- 8% lightness and exist only to give
+     the pill buttons their top-lit falloff. Nothing should hardcode an
+     orange: use these tokens so the accent stays a single source of truth. */
+  --accent: #ff3c00;
+  --accent-lift: #ff5b29;
+  --accent-deep: #d63200;
+  --orange-grad: linear-gradient(
+    180deg,
+    var(--accent-lift) 0%,
+    var(--accent-deep) 100%
+  );
 
   --ink: #ffffff;
   --muted: rgba(255, 255, 255, 0.72);
@@ -531,7 +539,7 @@ a {
 
 .card--highlight {
   background:
-    linear-gradient(79deg, var(--orange-1) 57%, #242424 112%) padding-box,
+    linear-gradient(79deg, var(--accent) 57%, #242424 112%) padding-box,
     var(--edge) border-box;
   box-shadow: inset 0 1px 20px 2px rgba(255, 255, 255, 0.16);
 }

@@ -11,7 +11,10 @@ function markDataUri(file: string): string {
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
 }
 
-export const MARK_ORANGE = "#F3431B";
+/** Ronixe brand accent. Must match --accent in globals.css and the circle
+ *  fill in mark-orange.svg, or the apple-icon shows a seam where the square
+ *  background meets the mark's circle. */
+export const MARK_ORANGE = "#FF3C00";
 
 export function orangeMark(): string {
   return markDataUri("mark-orange.svg");

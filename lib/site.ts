@@ -1,0 +1,92 @@
+/**
+ * Single source of truth for site-wide identity + SEO data.
+ * Consumed by the Metadata API (app/layout.tsx), JSON-LD structured data,
+ * the sitemap, and robots. Keep facts here — do not duplicate them elsewhere.
+ */
+
+// Production URL. Override per-environment with NEXT_PUBLIC_SITE_URL
+// (e.g. a Vercel preview deployment) without touching code.
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ronixe.com"
+).replace(/\/$/, "");
+
+export const SITE = {
+  name: "Ronixe",
+  legalName: "Ronixe",
+  url: SITE_URL,
+  title: "Ronixe — Software Development Company",
+  shortTitle: "Ronixe",
+  tagline: "We build applications from conception to launch.",
+  // Verbatim "Who We Are" copy.
+  description:
+    "Ronixe is a software development company. We build applications from conception to launch, guiding you from the initial idea through design and development as your single, dependable technical partner.",
+  ogDescription:
+    "We build applications from conception to launch, guiding you from the initial idea through design and development as your single, dependable technical partner.",
+  locale: "en_US",
+  founder: "Foweh Princewill Petinjoh",
+  foundingYear: "2024",
+  email: "info@ronixe.com",
+  phone: "+237670843870",
+  phoneDisplay: "+237 6 70 84 38 70",
+  whatsapp: "https://wa.link/qg26gg",
+  address: {
+    street: "Up Station",
+    locality: "Bamenda",
+    region: "North West",
+    country: "Cameroon",
+    countryCode: "CM",
+  },
+  keywords: [
+    "Ronixe",
+    "software development company",
+    "web application development",
+    "mobile app development",
+    "iOS and Android apps",
+    "e-commerce solutions",
+    "UI/UX design",
+    "API development and integration",
+    "software maintenance and support",
+    "custom software development",
+    "technical partner",
+    "Bamenda",
+    "Cameroon software company",
+  ],
+  // Public profiles for the sameAs graph. Add real URLs as they go live.
+  sameAs: [] as string[],
+} as const;
+
+/**
+ * Ronixe's service catalogue. Rendered into JSON-LD (hasOfferCatalog) so the
+ * full scope of work is indexable even though the visible page is hero-only.
+ */
+export const SERVICES = [
+  {
+    name: "Web Application Development",
+    description:
+      "Custom websites and web platforms built for your business needs.",
+  },
+  {
+    name: "Mobile App Development",
+    description:
+      "Applications for iOS and Android built for a smooth user experience.",
+  },
+  {
+    name: "E-Commerce Solutions",
+    description:
+      "Online stores with admin dashboards, product management, and payment integration.",
+  },
+  {
+    name: "UI/UX Design",
+    description:
+      "Clean, user-friendly interface design for web and mobile products.",
+  },
+  {
+    name: "API Development & Integration",
+    description:
+      "Connecting your product to the tools and services it needs to run.",
+  },
+  {
+    name: "Maintenance & Support",
+    description: "Ongoing updates, fixes, and improvements after launch.",
+  },
+] as const;

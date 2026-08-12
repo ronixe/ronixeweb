@@ -122,10 +122,14 @@ export default function Home() {
           <span className="badge-line right" aria-hidden="true" />
         </div>
 
+        {/* Each line is its own mask so the headline can rise into view. */}
         <h1 className="title">
-          We build applications
-          <br />
-          from conception to launch.
+          <span className="title-line">
+            <span className="title-line-in">We build applications</span>
+          </span>
+          <span className="title-line">
+            <span className="title-line-in">from conception to launch.</span>
+          </span>
         </h1>
 
         <p className="sub">

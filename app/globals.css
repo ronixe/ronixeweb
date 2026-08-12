@@ -40,7 +40,13 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
+  /* `clip`, not `hidden`. `hidden` turns the element into a scroll container,
+     which would become the scrollport for the sticky header below and stop it
+     from ever sticking. `clip` contains the same horizontal overflow without
+     creating one. */
+  overflow-x: clip;
+  /* Keeps #services from landing underneath the sticky header. */
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -51,7 +57,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {
@@ -68,7 +74,9 @@ a {
   position: relative;
   min-height: 100vh;
   isolation: isolate;
-  overflow: hidden;
+  /* Clips the oversized background layers. Must stay `clip` rather than
+     `hidden` so the sticky header keeps the viewport as its scrollport. */
+  overflow-x: clip;
 }
 
 .bg {
@@ -182,8 +190,26 @@ a {
 }
 
 .btn--orange {
+  position: relative;
+  overflow: hidden;
   background: var(--orange-grad);
   box-shadow: inset 0 1px 16px rgba(255, 255, 255, 0.5);
+}
+
+/* Specular sweep. Parked off the left edge; hover drives it across, which
+   reads as light catching a physical surface. */
+.btn--orange::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.34) 50%,
+    transparent 62%
+  );
+  translate: -130% 0;
+  pointer-events: none;
 }
 
 .btn--orange:hover {
@@ -198,6 +224,22 @@ a {
 .btn--glass:hover {
   background: rgba(255, 255, 255, 0.13);
   transform: translateY(-1px);
+}
+
+/* Tactile press. `scale` is independent of `transform`, so it stacks with the
+   hover lift rather than cancelling it. */
+.btn:active {
+  scale: 0.975;
+}
+
+/* Keyboard affordance, previously missing on every interactive element. */
+.btn:focus-visible,
+.btn-ghost:focus-visible,
+.nav-link:focus-visible,
+.nav-logo:focus-visible,
+.footer a:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 3px;
 }
 
 /* ---------- Navbar ---------- */
@@ -218,8 +260,23 @@ a {
   gap: 18px;
 }
 
+/* Scrim behind the sticky nav. Invisible at rest; the motion layer fades it in
+   over the first scroll so the bar stays legible once content passes under it. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -14px;
+  z-index: -1;
+  opacity: 0;
+  background: rgba(10, 5, 2, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
 /* Logo lockup: the mark is a self-contained white disc, so the pill around it
-   is gone — the wordmark sits directly beside it. */
+   is gone. The wordmark sits directly beside it. */
 .nav-logo {
   display: inline-flex;
   align-items: center;
@@ -398,6 +455,20 @@ a {
   overflow-wrap: break-word;
 }
 
+/* Mask box per headline line. The padding/negative-margin pair widens the
+   clip below the baseline so descenders (p, g) are never shaved off, without
+   adding layout height. */
+.title-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.title-line-in {
+  display: block;
+}
+
 .sub {
   margin-top: 24px;
   max-width: 60ch;
@@ -438,11 +509,19 @@ a {
     linear-gradient(var(--card-dark), var(--card-dark)) padding-box,
     var(--edge) border-box;
   box-shadow: inset 0 1px 20px 2px rgba(255, 255, 255, 0.09);
-  transition: transform 0.22s ease;
+  /* Hover lift uses `translate`, not `transform`, so it composes with the
+     scroll-reveal animation below instead of being overwritten by its fill. */
+  transition: translate 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  translate: 0 -4px;
+  box-shadow: inset 0 1px 20px 2px rgba(255, 255, 255, 0.16);
+}
+
+.card:hover .card-icon {
+  translate: 0 -2px;
 }
 
 /* The centre card is double-width and orange in the reference. */
@@ -472,6 +551,7 @@ a {
   height: 28px;
   color: #fff;
   flex-shrink: 0;
+  transition: translate 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-icon svg {
@@ -518,6 +598,172 @@ a {
 
 .footer a:hover {
   color: #fff;
+}
+
+/* ============================================================
+   Motion layer
+
+   Everything here is gated behind `prefers-reduced-motion: no-preference`,
+   so the resting state of the page IS the finished state. Nothing is hidden
+   by default: a reduced-motion visitor, or a browser that skips this block,
+   sees the full page with no missing content.
+
+   No JS and no animation library. Scroll-driven work uses native
+   `animation-timeline`, feature-detected, so unsupported browsers simply get
+   the static page rather than a broken one. Only `transform`, `translate`
+   and `opacity` are animated, all compositor-friendly.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ron-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes ron-line {
+    from {
+      transform: translate3d(0, 108%, 0);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes ron-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes ron-bloom {
+    from {
+      opacity: 0.34;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 0.72;
+      transform: scale(1.06);
+    }
+  }
+
+  /* --- Entrance cascade ---------------------------------------------------
+     Fires once on load, in reading order: chrome, then the headline, then the
+     supporting copy, then the actions. The sequence carries the eye down the
+     value proposition instead of dropping the whole page at once. */
+
+  .nav-inner,
+  .badge,
+  .sub,
+  .cta {
+    animation: ron-rise 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .nav-inner {
+    animation-delay: 0.02s;
+  }
+
+  .badge {
+    animation-delay: 0.1s;
+  }
+
+  .sub {
+    animation-delay: 0.42s;
+  }
+
+  .cta {
+    animation-delay: 0.53s;
+  }
+
+  /* The headline rises out of its own mask, one line after the other. This is
+     the page's single most important sentence, so it gets the strongest move. */
+  .title-line-in {
+    animation: ron-line 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .title-line:nth-child(1) .title-line-in {
+    animation-delay: 0.18s;
+  }
+
+  .title-line:nth-child(2) .title-line-in {
+    animation-delay: 0.29s;
+  }
+
+  /* --- Ambient bloom ------------------------------------------------------
+     One slow loop, and only one on the page. The backdrop is the brand's
+     warm glow; letting it breathe keeps the hero from reading as a flat
+     gradient screenshot. Opacity and scale only, so it stays on the GPU. */
+
+  .bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1020px;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 42% 22% at 50% 62%,
+      rgba(255, 176, 116, 0.16),
+      transparent 70%
+    );
+    animation: ron-bloom 18s ease-in-out infinite alternate;
+    will-change: opacity, transform;
+  }
+
+  /* --- Specular sweep on the primary CTA ---------------------------------- */
+
+  .btn--orange::after {
+    transition: translate 0.68s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn--orange:hover::after {
+    translate: 130% 0;
+  }
+
+  /* --- Scroll-driven work -------------------------------------------------
+     `view()` and `scroll()` are progressively enhanced. Where they are
+     unsupported the elements keep their normal static appearance. */
+
+  @supports (animation-timeline: view()) {
+    /* Service cards rise as they enter the viewport. The stagger comes from
+       offsetting each card's range rather than from a delay, so the sequence
+       stays tied to scroll position instead of to wall-clock time. */
+    .card {
+      animation: ron-rise linear both;
+      animation-timeline: view();
+    }
+
+    .card:nth-child(1) {
+      animation-range: entry 4% cover 24%;
+    }
+
+    .card:nth-child(2) {
+      animation-range: entry 9% cover 31%;
+    }
+
+    .card:nth-child(3) {
+      animation-range: entry 14% cover 38%;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    /* The nav scrim resolves over the first 140px of scroll: a state change,
+       signalling you have left the top of the page. */
+    .nav::before {
+      animation: ron-fade linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 140px;
+    }
+  }
 }
 
 /* ---------- Responsive ---------- */
@@ -595,5 +841,6 @@ a {
   * {
     scroll-behavior: auto !important;
     transition: none !important;
+    animation: none !important;
   }
 }

@@ -14,7 +14,9 @@ export const SITE = {
   name: "Ronixe",
   legalName: "Ronixe",
   url: SITE_URL,
-  title: "Ronixe — Software Development Company",
+  // SEO metadata only: drives the page title, og:title and twitter:title.
+  // The visible hero copy is deliberately left as Ronixe's own profile wording.
+  title: "Ronixe — Information and Technology Company",
   shortTitle: "Ronixe",
   tagline: "We build applications from conception to launch.",
   // Verbatim "Who We Are" copy.

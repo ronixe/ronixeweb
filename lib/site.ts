@@ -6,8 +6,13 @@
 
 // Production URL. Override per-environment with NEXT_PUBLIC_SITE_URL
 // (e.g. a Vercel preview deployment) without touching code.
+//
+// This MUST match the host the site actually serves on. The apex currently
+// 308-redirects to www, so www is canonical: pointing this at the apex would
+// put a redirecting URL in every canonical tag and every sitemap entry, which
+// Search Console reports as an error on every page.
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ronixe.com"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.ronixe.com"
 ).replace(/\/$/, "");
 
 export const SITE = {
@@ -53,7 +58,14 @@ export const SITE = {
     "Bamenda",
     "Cameroon software company",
   ],
-  // Public profiles for the sameAs graph. Add real URLs as they go live.
+  // Public profiles for the sameAs graph.
+  //
+  // TODO: populate this. It is the primary machine-readable signal telling
+  // Google and AI search engines WHICH Ronixe this is. The name collides with
+  // Ronix Tools, Ronix Wake and a same-named marketing agency abroad, so an
+  // empty array leaves the entity ambiguous. Add the real URLs as they exist:
+  // Google Business Profile, LinkedIn company page, Facebook, Instagram,
+  // GitHub, Clutch. Only add profiles Ronixe actually controls.
   sameAs: [] as string[],
 } as const;
 

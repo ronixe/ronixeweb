@@ -1,7 +1,14 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
+import { metadataForRoute } from "@/lib/routes";
+import { Backdrop } from "@/components/backdrop";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
-/* Inline icons keep the page dependency-free and fully static. */
+export const metadata: Metadata = metadataForRoute("/fr");
+
+/* Icônes en ligne : la page reste sans dépendance et entièrement statique. */
 function WebIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -62,49 +69,12 @@ function CommerceIcon() {
   );
 }
 
-export default function Home() {
+export default function AccueilFr() {
   return (
     <main className="page">
-      {/* Ambient background layers */}
-      <div className="bg" aria-hidden="true" />
-      <div className="bg-lines" aria-hidden="true" />
-      <div className="bg-grain" aria-hidden="true" />
+      <Backdrop />
+      <SiteHeader locale="fr" servicesHref="#services" />
 
-      {/* Navbar */}
-      <nav className="nav" aria-label="Primary">
-        <div className="nav-inner">
-          <a href="#top" className="nav-logo" aria-label={`${SITE.name} home`}>
-            <Image
-              src="/brand/mark-white.svg"
-              alt=""
-              width={38}
-              height={38}
-              priority
-            />
-            <span className="nav-wordmark">{SITE.name}</span>
-          </a>
-
-          <div className="nav-pill">
-            <a href="#services" className="nav-link">
-              Services
-            </a>
-            <a href={`mailto:${SITE.email}`} className="nav-link">
-              Contact
-            </a>
-          </div>
-
-          <div className="nav-right">
-            <a href={`mailto:${SITE.email}`} className="btn-ghost">
-              Email us
-            </a>
-            <a href={SITE.whatsapp} className="btn btn--orange">
-              Book a call
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
       <section className="hero" id="top">
         <div className="badge">
           <span className="badge-line" aria-hidden="true" />
@@ -117,37 +87,35 @@ export default function Home() {
                 height={16}
               />
             </span>
-            From conception to launch
+            De l&apos;idée au lancement
           </span>
           <span className="badge-line right" aria-hidden="true" />
         </div>
 
-        {/* Each line is its own mask so the headline can rise into view. */}
         <h1 className="title">
           <span className="title-line">
-            <span className="title-line-in">We build applications</span>
+            <span className="title-line-in">Nous créons vos applications</span>
           </span>
           <span className="title-line">
-            <span className="title-line-in">from conception to launch.</span>
+            <span className="title-line-in">de l&apos;idée au lancement.</span>
           </span>
         </h1>
 
         <p className="sub">
-          Ronixe is a software development company. We guide you from the
-          initial idea through design and development as your single,
-          dependable technical partner.
+          Ronixe est une entreprise de développement logiciel. Nous vous
+          accompagnons de la première idée jusqu&apos;au lancement, comme votre
+          partenaire technique unique et fiable.
         </p>
 
         <div className="cta">
           <a href={SITE.whatsapp} className="btn btn--orange">
-            Book a call
+            Prendre rendez-vous
           </a>
           <a href={`mailto:${SITE.email}`} className="btn btn--glass">
-            Email us
+            Écrivez-nous
           </a>
         </div>
 
-        {/* Feature cards — 1-2-1 grid matching the reference */}
         <div className="cards" id="services">
           <article className="card">
             <div className="card-head">
@@ -157,7 +125,8 @@ export default function Home() {
               <h2 className="card-title">Web</h2>
             </div>
             <p className="card-desc">
-              Custom websites and web platforms built for your business needs
+              Sites internet et plateformes web sur mesure, adaptés à votre
+              activité
             </p>
           </article>
 
@@ -169,8 +138,7 @@ export default function Home() {
               <h2 className="card-title">Mobile</h2>
             </div>
             <p className="card-desc">
-              Applications for iOS and Android built for a smooth user
-              experience
+              Applications iOS et Android conçues pour une expérience fluide
             </p>
           </article>
 
@@ -182,22 +150,14 @@ export default function Home() {
               <h2 className="card-title">E-Commerce</h2>
             </div>
             <p className="card-desc">
-              Online stores with dashboards, product management and payments
+              Boutiques en ligne avec tableau de bord, gestion des produits et
+              paiements
             </p>
           </article>
         </div>
       </section>
 
-      {/* Slim footer — trust signals (NAP) without adding content sections */}
-      <footer className="footer">
-        <p>
-          © {new Date().getFullYear()} {SITE.name}. All rights reserved.
-        </p>
-        <p>
-          <a href={`mailto:${SITE.email}`}>{SITE.email}</a> ·{" "}
-          {SITE.address.locality}, {SITE.address.country}
-        </p>
-      </footer>
+      <SiteFooter locale="fr" altPath="/" />
     </main>
   );
 }

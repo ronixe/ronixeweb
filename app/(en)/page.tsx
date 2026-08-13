@@ -5,6 +5,7 @@ import { metadataForRoute } from "@/lib/routes";
 import { Backdrop } from "@/components/backdrop";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SocialLinks } from "@/components/social-links";
 
 export const metadata: Metadata = metadataForRoute("/");
 
@@ -120,6 +121,8 @@ export default function Home() {
             Email us
           </a>
         </div>
+
+        <SocialLinks label={`${SITE.name} on social media`} />
 
         {/* Feature cards — 1-2-1 grid matching the reference */}
         <div className="cards" id="services">

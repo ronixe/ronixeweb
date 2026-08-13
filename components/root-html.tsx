@@ -88,7 +88,7 @@ export function RootHtml({
   locale: Locale;
   children: React.ReactNode;
 }) {
-  const jsonLd = buildJsonLd();
+  const jsonLd = buildJsonLd(locale);
 
   return (
     <html lang={UI[locale].htmlLang} className={figtree.variable}>

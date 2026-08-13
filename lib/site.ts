@@ -1,8 +1,12 @@
 /**
  * Single source of truth for site-wide identity + SEO data.
+ *
+ * Social profile URLs live in lib/social.ts.
  * Consumed by the Metadata API (app/layout.tsx), JSON-LD structured data,
  * the sitemap, and robots. Keep facts here — do not duplicate them elsewhere.
  */
+
+import { SAME_AS } from "./social";
 
 // Production URL. Override per-environment with NEXT_PUBLIC_SITE_URL
 // (e.g. a Vercel preview deployment) without touching code.
@@ -21,12 +25,20 @@ export const SITE = {
   url: SITE_URL,
   // SEO metadata only: drives the page title, og:title and twitter:title.
   // The visible hero copy is deliberately left as Ronixe's own profile wording.
-  title: "Ronixe — Information and Technology Company",
+  // "in Cameroon" brings this to 54 characters, inside the 50 to 60 range
+  // search results display in full, and adds the location as a keyword.
+  title: "Ronixe — Information and Technology Company in Cameroon",
   shortTitle: "Ronixe",
   tagline: "We build applications from conception to launch.",
-  // Verbatim "Who We Are" copy.
+  // Verbatim "Who We Are" copy. Used for JSON-LD, where length is not a
+  // constraint, so Ronixe's own wording is preserved in full.
   description:
     "Ronixe is a software development company. We build applications from conception to launch, guiding you from the initial idea through design and development as your single, dependable technical partner.",
+  // The <meta name="description"> for the home page. Separate from the above
+  // because the full profile copy runs to 201 characters, and search results
+  // truncate around 155. This is 125.
+  metaDescription:
+    "Ronixe is a software development company in Bamenda, Cameroon. We build web and mobile applications from conception to launch.",
   ogDescription:
     "We build applications from conception to launch, guiding you from the initial idea through design and development as your single, dependable technical partner.",
   locale: "en_US",
@@ -58,15 +70,9 @@ export const SITE = {
     "Bamenda",
     "Cameroon software company",
   ],
-  // Public profiles for the sameAs graph.
-  //
-  // TODO: populate this. It is the primary machine-readable signal telling
-  // Google and AI search engines WHICH Ronixe this is. The name collides with
-  // Ronix Tools, Ronix Wake and a same-named marketing agency abroad, so an
-  // empty array leaves the entity ambiguous. Add the real URLs as they exist:
-  // Google Business Profile, LinkedIn company page, Facebook, Instagram,
-  // GitHub, Clutch. Only add profiles Ronixe actually controls.
-  sameAs: [] as string[],
+  // Public profiles for the sameAs graph. Defined in lib/social.ts so the
+  // hero icon row and this list cannot drift apart.
+  sameAs: SAME_AS,
 } as const;
 
 /**

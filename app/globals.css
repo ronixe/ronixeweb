@@ -496,6 +496,48 @@ a {
   gap: 12px;
 }
 
+/* ---------- Social row ----------
+   Sits below the hero actions, deliberately quiet so it supports the CTAs
+   rather than competing with them. Each hit area is 44px square, which is the
+   minimum comfortable tap target, while the glyph itself stays at 18px. */
+
+.social {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.62);
+  transition: color 0.2s ease, background 0.2s ease, translate 0.2s ease;
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.social-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  translate: 0 -2px;
+}
+
+.social-link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
 /* ---------- Feature cards (1-2-1 grid, as in the reference) ---------- */
 
 .cards {
@@ -1197,6 +1239,27 @@ a {
   }
   .doc-cta-actions .btn {
     width: 100%;
+  }
+}
+
+/* Touch devices get larger hit areas. Scoped to coarse pointers so the
+   desktop layout keeps its density, and so this cannot loosen the nav on a
+   mouse-driven screen. */
+@media (pointer: coarse) {
+  .nav-link {
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+  .footer-links {
+    gap: 4px 22px;
+  }
+  .footer-links a,
+  .crumbs a {
+    display: inline-block;
+    padding: 9px 0;
+  }
+  .doc-body a:not(.btn) {
+    padding: 3px 0;
   }
 }
 

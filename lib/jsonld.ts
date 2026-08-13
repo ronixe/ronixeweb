@@ -8,7 +8,7 @@ import { SITE, SERVICES } from "@/lib/site";
  *
  * Validate with https://validator.schema.org and Google's Rich Results Test.
  */
-export function buildJsonLd() {
+export function buildJsonLd(locale: "en" | "fr" = "en") {
   const orgId = `${SITE.url}/#organization`;
   const siteId = `${SITE.url}/#website`;
 
@@ -43,7 +43,17 @@ export function buildJsonLd() {
           addressRegion: SITE.address.region,
           addressCountry: SITE.address.countryCode,
         },
-        areaServed: "Worldwide",
+        // ProfessionalService inherits from LocalBusiness, which Google
+        // expects to carry a price indication. Without it the entry is
+        // reported as incomplete.
+        priceRange: "$$",
+        areaServed: [
+          { "@type": "Country", name: "Cameroon" },
+          { "@type": "Country", name: "Nigeria" },
+          { "@type": "Country", name: "Ghana" },
+          { "@type": "Country", name: "Côte d'Ivoire" },
+          { "@type": "Country", name: "Gabon" },
+        ],
         knowsAbout: [
           "Web development",
           "Mobile app development",
@@ -57,7 +67,6 @@ export function buildJsonLd() {
           contactType: "sales",
           email: SITE.email,
           telephone: SITE.phone,
-          areaServed: "Worldwide",
           availableLanguage: ["English", "French"],
         },
         sameAs: SITE.sameAs,
@@ -81,7 +90,9 @@ export function buildJsonLd() {
         url: SITE.url,
         name: SITE.name,
         description: SITE.description,
-        inLanguage: "en",
+        // Follows the page it is emitted on. Declaring "en" on the French
+        // pages would contradict their html lang and hreflang.
+        inLanguage: locale,
         publisher: { "@id": orgId },
       },
     ],

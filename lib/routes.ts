@@ -45,7 +45,8 @@ export const ROUTES: readonly SiteRoute[] = [
     path: "/",
     label: "Home",
     title: SITE.title,
-    summary: SITE.description,
+    // The short form. Search results truncate the full profile copy.
+    summary: SITE.metaDescription,
     group: "primary",
     priority: 1,
     changeFrequency: "weekly",
@@ -191,9 +192,9 @@ export const ROUTES: readonly SiteRoute[] = [
   {
     path: "/fr",
     label: "Accueil",
-    title: "Ronixe — Entreprise de technologie et d'information",
+    title: "Ronixe — Entreprise de technologie et d'information au Cameroun",
     summary:
-      "Ronixe est une entreprise de développement logiciel basée à Bamenda, au Cameroun. Nous concevons des sites internet, des applications mobiles et des boutiques en ligne, de l'idée jusqu'au lancement.",
+      "Ronixe est une entreprise de développement logiciel à Bamenda, au Cameroun. Nous créons sites internet et applications mobiles, de l'idée au lancement.",
     group: "primary",
     priority: 0.9,
     changeFrequency: "weekly",

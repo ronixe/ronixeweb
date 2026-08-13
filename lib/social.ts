@@ -111,10 +111,11 @@ export const SOCIAL_PROFILES: readonly SocialProfile[] = [
     url: `https://www.quora.com/profile/${HANDLE}`,
     icon: "siQuora",
   },
-  // Substack puts the publication on a subdomain rather than a path.
+  // A Substack profile, not a publication. Publications live on a subdomain
+  // (handle.substack.com); profiles live at substack.com/@handle.
   {
     name: "Substack",
-    url: `https://${HANDLE}.substack.com`,
+    url: `https://substack.com/@${HANDLE}`,
     icon: "siSubstack",
   },
 ] as const;

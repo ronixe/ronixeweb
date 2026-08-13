@@ -517,14 +517,20 @@ a {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  color: rgba(255, 255, 255, 0.62);
+  /* Near-white, not the 62% used for links elsewhere. This row lands on the
+     brightest part of the orange bloom, where 62% composites to roughly
+     #E9C1AF on #C65C2C, about 2.6:1, and the icons disappear into the
+     background. At 92% it is near 3.8:1 and reads clearly. */
+  color: rgba(255, 255, 255, 0.92);
   transition: color 0.2s ease, background 0.2s ease, translate 0.2s ease;
 }
 
 .social-link svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: block;
+  /* Lifts the glyphs off a bright backdrop without darkening the row. */
+  filter: drop-shadow(0 1px 2px rgba(60, 15, 0, 0.35));
 }
 
 .social-link:hover {

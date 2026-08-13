@@ -1,5 +1,5 @@
 import * as simpleIcons from "simple-icons";
-import { SOCIAL_PROFILES } from "@/lib/social";
+import { HERO_PROFILES } from "@/lib/social";
 import { SITE } from "@/lib/site";
 
 /**
@@ -33,7 +33,7 @@ function iconPath(icon: string): string | null {
 export function SocialLinks({ label }: { label: string }) {
   return (
     <ul className="social" aria-label={label}>
-      {SOCIAL_PROFILES.map((profile) => {
+      {HERO_PROFILES.map((profile) => {
         const path = iconPath(profile.icon);
         if (!path) return null;
         return (

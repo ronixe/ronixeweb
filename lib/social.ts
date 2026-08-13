@@ -64,20 +64,19 @@ export const SOCIAL_PROFILES: readonly SocialProfile[] = [
     icon: "siTiktok",
     showInHero: true,
   },
+  // ---- sameAs only --------------------------------------------------------
+
   {
     name: "Pinterest",
     url: `https://www.pinterest.com/${HANDLE}`,
     icon: "siPinterest",
-    showInHero: true,
   },
   {
     name: "Reddit",
     url: `https://www.reddit.com/user/${HANDLE}`,
     icon: "siReddit",
-    showInHero: true,
   },
 
-  // ---- sameAs only --------------------------------------------------------
   // Portfolio credibility for the branding service line.
 
   {

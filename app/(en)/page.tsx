@@ -87,7 +87,7 @@ export default function Home() {
             <span className="badge-chip" aria-hidden="true">
               <Image
                 src="/brand/mark-white.svg"
-                alt=""
+                alt={`${SITE.name} logo`}
                 width={16}
                 height={16}
               />

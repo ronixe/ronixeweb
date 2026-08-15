@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "./site";
+import { BRAND_MARKS } from "./brand";
 import { DEFAULT_LOCALE, UI, type Locale } from "./i18n";
 
 /**
@@ -36,6 +37,8 @@ export interface SiteRoute {
   locale: Locale;
   /** The same page in the other language, if it exists. */
   alt?: string;
+  /** Absolute image URLs to list for this page in sitemap.xml's <image:image> extension. */
+  images?: string[];
 }
 
 export const ROUTES: readonly SiteRoute[] = [
@@ -174,6 +177,19 @@ export const ROUTES: readonly SiteRoute[] = [
     changeFrequency: "yearly",
     inFooter: true,
     locale: "en",
+  },
+  {
+    path: "/brand",
+    label: "Brand assets",
+    title: "Brand Assets",
+    summary:
+      "Official Ronixe logo marks for press, partners and directory listings, with usage guidelines.",
+    group: "meta",
+    priority: 0.3,
+    changeFrequency: "yearly",
+    inFooter: true,
+    locale: "en",
+    images: BRAND_MARKS.map((mark) => `${SITE.url}/brand/${mark.file}`),
   },
   {
     path: "/sitemap",

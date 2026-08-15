@@ -27,7 +27,7 @@ export function SiteHeader({
         <Link href={homeHref} className="nav-logo" aria-label={`${SITE.name} home`}>
           <Image
             src="/brand/mark-white.svg"
-            alt=""
+            alt={`${SITE.name} logo`}
             width={38}
             height={38}
             priority

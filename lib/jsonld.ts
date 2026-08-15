@@ -1,4 +1,5 @@
 import { SITE, SERVICES } from "@/lib/site";
+import { BRAND_MARKS } from "@/lib/brand";
 
 /**
  * Builds a schema.org @graph describing Ronixe for search engines and AI
@@ -16,7 +17,12 @@ export function buildJsonLd(locale: "en" | "fr" = "en") {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Organization", "ProfessionalService"],
+        // A single, most-specific type. ProfessionalService already extends
+        // LocalBusiness -> Organization in schema.org's hierarchy, so every
+        // Organization property below stays valid. Several third-party SEO
+        // validators only accept a string @type and flag an array (even a
+        // spec-legal one) as a critical error, so this stays a single type.
+        "@type": "ProfessionalService",
         "@id": orgId,
         name: SITE.name,
         legalName: SITE.legalName,
@@ -30,7 +36,24 @@ export function buildJsonLd(locale: "en" | "fr" = "en") {
           "@type": "ImageObject",
           url: `${SITE.url}/brand/mark-orange.svg`,
         },
-        image: `${SITE.url}/opengraph-image`,
+        // An array, not a single URL: the opengraph card plus every logo
+        // variant on /brand, so Google can associate each indexed image with
+        // the Organization entity rather than just the social-share card.
+        image: [
+          {
+            "@type": "ImageObject",
+            url: `${SITE.url}/opengraph-image`,
+            width: 1200,
+            height: 630,
+          },
+          ...BRAND_MARKS.map((mark) => ({
+            "@type": "ImageObject" as const,
+            url: `${SITE.url}/brand/${mark.file}`,
+            width: 1080,
+            height: 1080,
+            caption: mark.caption,
+          })),
+        ],
         founder: {
           "@type": "Person",
           name: SITE.founder,

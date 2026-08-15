@@ -23,3 +23,34 @@ export function orangeMark(): string {
 export function whiteMark(): string {
   return markDataUri("mark-white.svg");
 }
+
+/**
+ * Full-bleed circular logo variants (avatar/press use, not the transparent
+ * nav mark). Single source of truth for the /brand page, the JSON-LD image
+ * array, and the image sitemap entry, so the three never drift apart.
+ */
+export interface BrandMark {
+  /** Filename under /public/brand. */
+  file: string;
+  background: "white" | "orange" | "black";
+  /** Used as alt text, figcaption and the JSON-LD ImageObject caption. */
+  caption: string;
+}
+
+export const BRAND_MARKS: readonly BrandMark[] = [
+  {
+    file: "ronixe-logo-white-background.svg",
+    background: "white",
+    caption: "Ronixe logo mark on a white background",
+  },
+  {
+    file: "ronixe-logo-orange-background.svg",
+    background: "orange",
+    caption: "Ronixe logo mark on an orange background",
+  },
+  {
+    file: "ronixe-logo-black-background.svg",
+    background: "black",
+    caption: "Ronixe logo mark on a black background",
+  },
+] as const;

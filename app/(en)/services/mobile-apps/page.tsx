@@ -96,7 +96,7 @@ export default function MobileAppsPage() {
           {
             question: "Can the app take mobile money payments?",
             answer:
-              "Yes. MTN Mobile Money and Orange Money can be integrated directly into the app so customers pay without leaving it. This is the same integration work described on our mobile money page.",
+              "Yes. MTN Mobile Money and Orange Money can be integrated directly into the app so customers pay without leaving it. This is the same kind of payment integration work we do as part of API development.",
           },
           {
             question: "Will the app work without internet?",
@@ -121,9 +121,9 @@ export default function MobileAppsPage() {
       <RelatedLinks
         items={[
           {
-            href: "/services/mobile-money-integration",
-            label: "Mobile money",
-            note: "MTN MoMo and Orange Money payments, in-app or on the web.",
+            href: "/services/api-integration",
+            label: "API integration",
+            note: "MTN MoMo and Orange Money payments, and the backend the app talks to.",
           },
           {
             href: "/services/web-development",
@@ -131,9 +131,9 @@ export default function MobileAppsPage() {
             note: "Often the cheaper answer to the same problem.",
           },
           {
-            href: "/services/branding",
-            label: "Branding",
-            note: "App icons, store assets and the identity around them.",
+            href: "/services/ui-ux-design",
+            label: "UI/UX design",
+            note: "App icons, screen flows and the interface around them.",
           },
         ]}
       />

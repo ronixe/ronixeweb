@@ -105,7 +105,7 @@ export default function ApplicationMobile() {
           {
             question: "L'application peut-elle encaisser par mobile money ?",
             answer:
-              "Oui. MTN Mobile Money et Orange Money peuvent être intégrés directement dans l'application pour que le client paie sans en sortir. Il s'agit du même travail que celui décrit sur notre page consacrée au mobile money.",
+              "Oui. MTN Mobile Money et Orange Money peuvent être intégrés directement dans l'application pour que le client paie sans en sortir. C'est le même type de travail que celui que nous menons dans le cadre du développement d'API.",
           },
           {
             question: "L'application fonctionnera-t-elle sans internet ?",
@@ -132,9 +132,9 @@ export default function ApplicationMobile() {
         locale="fr"
         items={[
           {
-            href: "/fr/services/paiement-mobile-money",
-            label: "Mobile money",
-            note: "Paiements MTN MoMo et Orange Money, dans l'application ou sur le web.",
+            href: "/fr/services/developpement-integration-api",
+            label: "Intégration API",
+            note: "Paiements MTN MoMo et Orange Money, et le backend derrière l'application.",
           },
           {
             href: "/fr/services/creation-site-internet",
@@ -142,9 +142,9 @@ export default function ApplicationMobile() {
             note: "Souvent la réponse la moins chère au même besoin.",
           },
           {
-            href: "/fr/services/identite-visuelle",
-            label: "Identité visuelle",
-            note: "Icônes, visuels de boutique et identité autour de l'application.",
+            href: "/fr/services/conception-ui-ux",
+            label: "Conception UI/UX",
+            note: "Icônes, parcours d'écran et identité autour de l'application.",
           },
         ]}
       />

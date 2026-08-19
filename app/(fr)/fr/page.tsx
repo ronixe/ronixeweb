@@ -51,20 +51,20 @@ function MobileIcon() {
   );
 }
 
-function CommerceIcon() {
+function AutomationIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
-        d="M5 7h14l-1.2 12.2a1.6 1.6 0 0 1-1.6 1.3H7.8a1.6 1.6 0 0 1-1.6-1.3L5 7Z"
+        d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinejoin="round"
       />
       <path
-        d="M9 9V6.2a3 3 0 0 1 6 0V9"
+        d="M19 16.5l.7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7.7-1.9Z"
         stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
+        strokeWidth="1.3"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -148,13 +148,13 @@ export default function AccueilFr() {
           <article className="card">
             <div className="card-head">
               <span className="card-icon">
-                <CommerceIcon />
+                <AutomationIcon />
               </span>
-              <h2 className="card-title">E-Commerce</h2>
+              <h2 className="card-title">Automatisation IA</h2>
             </div>
             <p className="card-desc">
-              Boutiques en ligne avec tableau de bord, gestion des produits et
-              paiements
+              Chatbots IA, automatisation des processus et fonctionnalités
+              intelligentes intégrées à votre produit
             </p>
           </article>
         </div>

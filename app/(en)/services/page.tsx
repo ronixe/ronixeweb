@@ -9,10 +9,10 @@ export const metadata: Metadata = metadataForRoute("/services");
 const SERVICE_PATHS = [
   "/services/web-development",
   "/services/mobile-apps",
-  "/services/ecommerce",
-  "/services/mobile-money-integration",
-  "/services/branding",
-  "/services/digital-marketing",
+  "/services/ai-automation",
+  "/services/ui-ux-design",
+  "/services/api-integration",
+  "/services/maintenance-support",
 ];
 
 export default function ServicesPage() {
@@ -24,7 +24,7 @@ export default function ServicesPage() {
     <PageShell
       path="/services"
       title="Services"
-      lede={`${SITE.name} builds software, designs brands and runs digital marketing for businesses across West Africa, from a single studio in ${SITE.address.locality}, ${SITE.address.country}.`}
+      lede={`${SITE.name} builds web and mobile software, designs the interfaces on top of it, and connects it to the tools it needs to run, from a single studio in ${SITE.address.locality}, ${SITE.address.country}.`}
       crumbs={[{ label: "Home", href: "/" }]}
     >
       <section>
@@ -58,10 +58,9 @@ export default function ServicesPage() {
         <h2>Where we work</h2>
         <p>
           Ronixe is based in {SITE.address.locality}, in the{" "}
-          {SITE.address.region} region of {SITE.address.country}, and works with
-          clients across Cameroon, Nigeria, Ghana, Côte d&apos;Ivoire and Gabon.
-          Projects run in English or French depending on the market you are
-          selling into.
+          {SITE.address.region} region of {SITE.address.country}, and works
+          with clients across Cameroon and Africa. Projects run in English or
+          French depending on the market you are selling into.
         </p>
       </section>
 

@@ -20,28 +20,32 @@ export function SiteHeader({
   const homeHref = locale === "fr" ? "/fr" : "/";
   const services =
     servicesHref ?? (locale === "fr" ? "/fr/services" : "/services");
+  const about = locale === "fr" ? "/fr/a-propos" : "/about";
+  const contact = locale === "fr" ? "/fr/contact" : "/contact";
 
   return (
     <nav className="nav" aria-label={t.primaryNav}>
       <div className="nav-inner">
         <Link href={homeHref} className="nav-logo" aria-label={`${SITE.name} home`}>
           <Image
-            src="/brand/mark-white.svg"
+            src="/brand/ronixe_secondary_logo.svg"
             alt={`${SITE.name} logo`}
-            width={38}
-            height={38}
+            width={767}
+            height={197}
             priority
           />
-          <span className="nav-wordmark">{SITE.name}</span>
         </Link>
 
         <div className="nav-pill">
           <Link href={services} className="nav-link">
             {t.services}
           </Link>
-          <a href={`mailto:${SITE.email}`} className="nav-link">
+          <Link href={about} className="nav-link">
+            {t.about}
+          </Link>
+          <Link href={contact} className="nav-link">
             {t.contact}
-          </a>
+          </Link>
         </div>
 
         <div className="nav-right">

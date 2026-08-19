@@ -9,10 +9,10 @@ export const metadata: Metadata = metadataForRoute("/fr/services");
 const SERVICE_PATHS = [
   "/fr/services/creation-site-internet",
   "/fr/services/application-mobile",
-  "/fr/services/site-e-commerce",
-  "/fr/services/paiement-mobile-money",
-  "/fr/services/identite-visuelle",
-  "/fr/services/marketing-digital",
+  "/fr/services/automatisation-ia",
+  "/fr/services/conception-ui-ux",
+  "/fr/services/developpement-integration-api",
+  "/fr/services/maintenance-assistance",
 ];
 
 export default function ServicesFr() {
@@ -25,7 +25,7 @@ export default function ServicesFr() {
       path="/fr/services"
       locale="fr"
       title="Nos services"
-      lede={`Ronixe développe des logiciels, conçoit des identités visuelles et pilote le marketing digital des entreprises d'Afrique de l'Ouest, depuis un seul studio à ${SITE.address.locality}, au Cameroun.`}
+      lede={`Ronixe développe des logiciels web et mobiles, conçoit les interfaces qui vont dessus, et les connecte aux outils dont ils ont besoin, depuis un seul studio à ${SITE.address.locality}, au Cameroun.`}
       crumbs={[{ label: "Accueil", href: "/fr" }]}
     >
       <section>
@@ -61,9 +61,9 @@ export default function ServicesFr() {
         <h2>Où nous intervenons</h2>
         <p>
           Ronixe est basée à {SITE.address.locality}, dans la région du{" "}
-          Nord-Ouest du Cameroun, et travaille avec des clients au Cameroun, en
-          Côte d&apos;Ivoire, au Gabon, au Nigeria et au Ghana. Les projets se
-          déroulent en français ou en anglais selon le marché que vous visez.
+          Nord-Ouest du Cameroun, et travaille avec des clients au Cameroun et
+          à travers l&apos;Afrique. Les projets se déroulent en français ou en
+          anglais selon le marché que vous visez.
         </p>
       </section>
 

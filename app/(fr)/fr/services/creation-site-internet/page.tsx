@@ -149,9 +149,9 @@ export default function CreationSiteInternet() {
         locale="fr"
         items={[
           {
-            href: "/fr/services/site-e-commerce",
-            label: "E-commerce",
-            note: "Boutiques en ligne avec gestion des produits, commandes et mobile money.",
+            href: "/fr/services/automatisation-ia",
+            label: "Automatisation IA",
+            note: "Chatbots, automatisation des processus et fonctionnalités IA intégrées au site.",
           },
           {
             href: "/fr/services/application-mobile",
@@ -159,9 +159,9 @@ export default function CreationSiteInternet() {
             note: "Applications iOS et Android pour vos clients et vos équipes.",
           },
           {
-            href: "/fr/services/identite-visuelle",
-            label: "Identité visuelle",
-            note: "La marque sur laquelle le site vient se poser.",
+            href: "/fr/services/conception-ui-ux",
+            label: "Conception UI/UX",
+            note: "Le travail d'interface réalisé avant tout développement.",
           },
         ]}
       />

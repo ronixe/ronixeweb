@@ -137,9 +137,9 @@ export default function WebDevelopmentPage() {
       <RelatedLinks
         items={[
           {
-            href: "/services/ecommerce",
-            label: "E-commerce",
-            note: "Online stores with product management, orders and mobile money.",
+            href: "/services/ai-automation",
+            label: "AI automation",
+            note: "Chatbots, workflow automation and AI features built into the site.",
           },
           {
             href: "/services/mobile-apps",
@@ -147,9 +147,9 @@ export default function WebDevelopmentPage() {
             note: "iOS and Android applications for customers and for your team.",
           },
           {
-            href: "/services/branding",
-            label: "Branding",
-            note: "Identity work, for when the site needs a brand to sit on.",
+            href: "/services/ui-ux-design",
+            label: "UI/UX design",
+            note: "The interface work that happens before we build anything.",
           },
         ]}
       />

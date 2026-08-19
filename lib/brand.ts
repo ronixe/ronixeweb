@@ -25,14 +25,26 @@ export function whiteMark(): string {
 }
 
 /**
- * Full-bleed circular logo variants (avatar/press use, not the transparent
- * nav mark). Single source of truth for the /brand page, the JSON-LD image
- * array, and the image sitemap entry, so the three never drift apart.
+ * Official logo assets. Single source of truth for the /brand page, the
+ * JSON-LD image array, and the image sitemap entry, so they never drift
+ * apart. Two kinds, at two different aspect ratios:
+ *
+ *   - "icon": full-bleed circular mark, square (1080x1080), for avatars,
+ *     favicons and anywhere only the symbol fits.
+ *   - "lockup": the icon plus the "Ronixe" wordmark side by side, wide
+ *     (767x197), for headers, letterheads and anywhere the full name should
+ *     read alongside the mark.
+ *
+ * `width`/`height` are each file's real intrinsic size, not a shared
+ * assumption, because jsonld.ts reports them as an image's actual
+ * dimensions.
  */
 export interface BrandMark {
   /** Filename under /public/brand. */
   file: string;
-  background: "white" | "orange" | "black";
+  kind: "icon" | "lockup";
+  width: number;
+  height: number;
   /** Used as alt text, figcaption and the JSON-LD ImageObject caption. */
   caption: string;
 }
@@ -40,17 +52,52 @@ export interface BrandMark {
 export const BRAND_MARKS: readonly BrandMark[] = [
   {
     file: "ronixe-logo-white-background.svg",
-    background: "white",
+    kind: "icon",
+    width: 1080,
+    height: 1080,
     caption: "Ronixe logo mark on a white background",
   },
   {
     file: "ronixe-logo-orange-background.svg",
-    background: "orange",
+    kind: "icon",
+    width: 1080,
+    height: 1080,
     caption: "Ronixe logo mark on an orange background",
   },
   {
     file: "ronixe-logo-black-background.svg",
-    background: "black",
+    kind: "icon",
+    width: 1080,
+    height: 1080,
     caption: "Ronixe logo mark on a black background",
   },
+  {
+    file: "ronixe_primary_logo.svg",
+    kind: "lockup",
+    width: 767,
+    height: 197,
+    caption: "Ronixe primary logo — orange, for light backgrounds",
+  },
+  {
+    file: "ronixe_secondary_logo.svg",
+    kind: "lockup",
+    width: 767,
+    height: 197,
+    caption: "Ronixe secondary logo — white, for dark backgrounds",
+  },
+  {
+    file: "ronixe_null_logo.svg",
+    kind: "lockup",
+    width: 767,
+    height: 197,
+    caption: "Ronixe logo — black on white, for single-colour use",
+  },
 ] as const;
+
+export function iconMarks(): BrandMark[] {
+  return BRAND_MARKS.filter((mark) => mark.kind === "icon");
+}
+
+export function lockupMarks(): BrandMark[] {
+  return BRAND_MARKS.filter((mark) => mark.kind === "lockup");
+}

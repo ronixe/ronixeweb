@@ -49,8 +49,8 @@ export function buildJsonLd(locale: "en" | "fr" = "en") {
           ...BRAND_MARKS.map((mark) => ({
             "@type": "ImageObject" as const,
             url: `${SITE.url}/brand/${mark.file}`,
-            width: 1080,
-            height: 1080,
+            width: mark.width,
+            height: mark.height,
             caption: mark.caption,
           })),
         ],
@@ -80,7 +80,7 @@ export function buildJsonLd(locale: "en" | "fr" = "en") {
         knowsAbout: [
           "Web development",
           "Mobile app development",
-          "E-commerce",
+          "AI automation",
           "UI/UX design",
           "API integration",
           "Software maintenance",

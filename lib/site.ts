@@ -61,7 +61,7 @@ export const SITE = {
     "web application development",
     "mobile app development",
     "iOS and Android apps",
-    "e-commerce solutions",
+    "AI automation",
     "UI/UX design",
     "API development and integration",
     "software maintenance and support",
@@ -91,9 +91,9 @@ export const SERVICES = [
       "Applications for iOS and Android built for a smooth user experience.",
   },
   {
-    name: "E-Commerce Solutions",
+    name: "AI Automation",
     description:
-      "Online stores with admin dashboards, product management, and payment integration.",
+      "AI chatbots, workflow automation and smart features built into your product.",
   },
   {
     name: "UI/UX Design",
